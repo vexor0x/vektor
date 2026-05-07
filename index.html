@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEKTOR — Premium Advertising</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== BASE ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#140008;
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== PREMIUM BACKGROUND ===== */
+body::before{
+content:'';
+position:fixed;
+width:900px;
+height:900px;
+background:radial-gradient(circle,#ff3d6f55 0%,transparent 70%);
+top:-300px;
+left:50%;
+transform:translateX(-50%);
+filter:blur(60px);
+z-index:-2;
+animation:bgMove 12s ease-in-out infinite alternate;
+}
+
+body::after{
+content:'';
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 30%, rgba(255,120,160,0.12), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(255,200,160,0.08), transparent 45%);
+z-index:-3;
+animation:bgShift 14s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove{
+0%{transform:translateX(-50%) scale(1);}
+100%{transform:translateX(-50%) scale(1.08);}
+}
+
+@keyframes bgShift{
+0%{transform:scale(1);}
+100%{transform:scale(1.06);}
+}
+
+/* ===== HEADER ===== */
+header{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 7%;
+backdrop-filter:blur(20px);
+background:rgba(15,0,10,0.5);
+border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.logo{
+font-size:32px;
+font-weight:900;
+letter-spacing:5px;
+}
+
+nav{
+display:flex;
+gap:45px;
+}
+
+nav a{
+text-decoration:none;
+color:#ffffffaa;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#ffddb8;
+}
+
+.top-btn{
+padding:14px 28px;
+border-radius:14px;
+border:none;
+font-weight:700;
+cursor:pointer;
+background:linear-gradient(135deg,#ffe2bf,#c98762);
+}
+
+/* ===== HERO ===== */
+.hero{
+padding:90px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:50px;
+flex-wrap:wrap;
+
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1.2s ease forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.left{
+flex:1;
+min-width:320px;
+}
+
+.badge{
+display:inline-block;
+padding:12px 22px;
+border-radius:100px;
+border:1px solid rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.05);
+margin-bottom:35px;
+backdrop-filter:blur(12px);
+color:#ffddb8;
+font-size:14px;
+}
+
+/* ✅ FIX: зменшений заголовок */
+h1{
+font-size:56px;
+line-height:1.05;
+font-weight:900;
+margin-bottom:30px;
+}
+
+h1 span{
+display:block;
+background:linear-gradient(90deg,#fff1dd,#e9b18a);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:20px;
+line-height:1.8;
+color:#ffffffb0;
+max-width:700px;
+margin-bottom:40px;
+}
+
+.main-btn{
+padding:20px 40px;
+font-size:18px;
+font-weight:700;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#ffe2bf,#c98762);
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 40px rgba(255,180,120,0.3);
+}
+
+.main-btn:hover{
+transform:translateY(-4px) scale(1.02);
+}
+
+/* ===== LOGO 3D ===== */
+.right{
+flex:1;
+display:flex;
+justify-content:center;
+min-width:320px;
+perspective:1000px;
+}
+
+.logo-circle{
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.logo-circle img{
+width:520px;
+max-width:100%;
+object-fit:contain;
+filter:
+drop-shadow(0 0 40px rgba(255,120,120,0.25))
+drop-shadow(0 0 80px rgba(255,120,120,0.15));
+animation:floatLogo 6s ease-in-out infinite;
+transform-style:preserve-3d;
+}
+
+@keyframes floatLogo{
+0%{transform:translateY(0px) rotateY(0deg);}
+50%{transform:translateY(-15px) rotateY(10deg);}
+100%{transform:translateY(0px) rotateY(0deg);}
+}
+
+/* ===== SERVICES ===== */
+.services{
+padding:0 7% 70px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+padding:30px;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:28px;
+backdrop-filter:blur(18px);
+box-shadow:0 10px 40px rgba(0,0,0,0.25);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.08);
+}
+
+.card h3{
+font-size:24px;
+margin-bottom:15px;
+color:#ffd8b2;
+}
+
+.card p{
+line-height:1.7;
+color:#ffffffaa;
+}
+
+/* ===== CONTACT (НЕ ТРОГАВ) ===== */
+.contact{
+padding:60px 7% 120px;
+}
+
+.contact-box{
+max-width:1200px;
+margin:auto;
+padding:60px;
+border-radius:40px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.06);
+backdrop-filter:blur(20px);
+box-shadow:0 30px 80px rgba(0,0,0,0.45);
+}
+
+.contact-box h2{
+font-size:54px;
+margin-bottom:15px;
+}
+
+.contact-box p{
+color:#ffffff99;
+margin-bottom:40px;
+font-size:18px;
+}
+
+form{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+input,
+textarea{
+padding:20px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:18px;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+textarea{
+height:160px;
+resize:none;
+grid-column:span 2;
+}
+
+.full{
+grid-column:span 2;
+}
+
+.submit-btn{
+padding:22px;
+font-size:18px;
+font-weight:800;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#ffe2bf,#c98762);
+cursor:pointer;
+}
+
+/* ===== FOOTER ===== */
+footer{
+padding:50px 7%;
+border-top:1px solid rgba(255,255,255,0.06);
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:40px;
+}
+
+/* ===== MOBILE FIX ===== */
+@media(max-width:900px){
+
+h1{
+font-size:42px;
+line-height:1.1;
+}
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.logo-circle img{
+width:350px;
+}
+
+nav{display:none;}
+
+footer{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">VEKTOR</div>
+
+<nav>
+<a href="#">Послуги</a>
+<a href="#">Про нас</a>
+<a href="#">Портфоліо</a>
+<a href="#">Контакти</a>
+</nav>
+
+<button class="top-btn">Замовити дзвінок</button>
+</header>
+
+<section class="hero">
+
+<div class="left">
+
+<div class="badge">ПРОФЕСІЙНО • ЯКІСНО • НАДІЙНО</div>
+
+<h1>VEKTOR:<span>ВЛАСНЕ ВИРОБНИЦТВО</span></h1>
+
+<p>
+Преміальні рекламні рішення для вашого бізнесу.
+Вивіски, друк, банери, брендування, зовнішня реклама та LED конструкції.
+</p>
+
+<button class="main-btn">ОТРИМАТИ КОНСУЛЬТАЦІЮ</button>
+
+</div>
+
+<div class="right">
+<div class="logo-circle">
+<img src="logo.png" alt="VEKTOR logo">
+</div>
+</div>
+
+</section>
+
+<!-- форма залишена як є -->
+<section class="contact">
+<div class="contact-box">
+
+<h2>ЗАЛИШИТИ ЗАЯВКУ</h2>
+
+<p>Ми зв'яжемося з вами найближчим часом</p>
+
+<form>
+
+<input type="text" placeholder="Ваше ім'я">
+<input type="email" placeholder="E-mail">
+<input type="tel" class="full" placeholder="Телефон">
+<textarea placeholder="Опишіть ваше замовлення"></textarea>
+
+<button class="submit-btn full">PREMIUM ЗАМОВЛЕННЯ</button>
+
+</form>
+
+</div>
+</section>
+
+</body>
+</html>
